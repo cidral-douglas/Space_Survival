@@ -18,10 +18,13 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        //Blocks the camera X and Y limits
-        float clampedX = Mathf.Clamp(playerPosition.position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(playerPosition.position.y, minY, maxY);
-        //Lerp is making a smooth camera follow
-        transform.position = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), cameraSpeed);
+        if(playerPosition != null)
+        {
+            //Blocks the camera X and Y limits
+            float clampedX = Mathf.Clamp(playerPosition.position.x, minX, maxX);
+            float clampedY = Mathf.Clamp(playerPosition.position.y, minY, maxY);
+            //Lerp is making a smooth camera follow
+            transform.position = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), cameraSpeed);
+        }
     }
 }

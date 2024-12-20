@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int health = 5;
+
     [SerializeField] float speed = 1f;
 
     private Rigidbody2D rb;
@@ -26,6 +28,16 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         move();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Player: Ouch!");
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void move()
